@@ -2,8 +2,8 @@ package com.math012.autoresobras.business.service;
 
 import com.math012.autoresobras.business.DTO.request.ObraRequestDTO;
 import com.math012.autoresobras.business.DTO.response.ObraResponseDTO;
-import com.math012.autoresobras.business.converter.mapper.ObraMapper;
 import com.math012.autoresobras.business.converter.ObraConverter;
+import com.math012.autoresobras.business.converter.mapper.ObraMapper;
 import com.math012.autoresobras.business.converter.update.ObraUpdateMapper;
 import com.math012.autoresobras.infra.entity.ObraEntity;
 import com.math012.autoresobras.infra.exceptions.api.InvalidFieldsException;
@@ -54,7 +54,6 @@ public class ObraService {
 
     public ObraResponseDTO updateAuthorsWorks(Long id, ObraRequestDTO obraRequestDTO) {
         ObraEntity entity = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Erro ao atualizar a obra: id " + id + ", não encontrado, tente novamente!"));
-        repository.save(updateMapper.updateAuthorsWorks(obraRequestDTO, entity));
         return obraConverter.forObraResponseDTOFromObraEntityConverter(repository.save(updateMapper.updateAuthorsWorks(obraRequestDTO, entity)));
     }
 

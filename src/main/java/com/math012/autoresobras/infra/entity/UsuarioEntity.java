@@ -17,6 +17,8 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
+@EqualsAndHashCode
 @Builder
 public class UsuarioEntity implements UserDetails {
 
@@ -26,7 +28,6 @@ public class UsuarioEntity implements UserDetails {
     private String username;
     private String password;
     private List<String> roles;
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
